@@ -1,7 +1,6 @@
 local f = CreateFrame("Frame")
 
 f:RegisterEvent("ADDON_LOADED")
-f:RegisterEvent("INSPECT_READY")
 
 local function CaltulateItemLevelFromEquippedItems(unit)
     if not unit or not UnitExists(unit) then return 0 end
