@@ -1,0 +1,7 @@
+## Interface: 120005
+## Version: 1.0.0
+## Title: Tiny iLvL
+## Notes: Display iLvL in the inspect frame
+## Author: Fabriond
+
+Tiny_iLvL.lua
