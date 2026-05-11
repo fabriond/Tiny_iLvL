@@ -2,7 +2,7 @@ local f = CreateFrame("Frame")
 
 f:RegisterEvent("ADDON_LOADED")
 
-local function CaltulateItemLevelFromEquippedItems(unit)
+local function CalculateItemLevelFromEquippedItems(unit)
     if not unit or not UnitExists(unit) then return 0 end
 
     local total = 0
@@ -16,7 +16,7 @@ local function CaltulateItemLevelFromEquippedItems(unit)
             local mainHandLink = GetInventoryItemLink(unit, 16)
             if mainHandLink then
                 local _, _, _, _, _, _, _, _, mainHandEquipLoc = GetItemInfo(mainHandLink)
-                if mainHandEquipLoc == "INVTYPE_2HWEAPON" then
+                if mainHandEquipLoc == "INVTYPE_2HWEAPON" or mainHandEquipLoc == "INVTYPE_RANGEDRIGHT" then
                     -- This corrects for the missing off-hand in the case of two-handed weapons
                     itemLink = mainHandLink
                 end
@@ -37,7 +37,7 @@ end
 local function SetTinyItemLevelText()
     if not InspectPaperDollFrame or not InspectPaperDollFrame:IsShown() then return end
 
-    local ilvl = CaltulateItemLevelFromEquippedItems(InspectFrame.unit)
+    local ilvl = CalculateItemLevelFromEquippedItems(InspectFrame.unit)
 
     if ilvl then
         InspectPaperDollFrame.tinyItemLevel:SetText(string.format("iLvl: %d", ilvl))
