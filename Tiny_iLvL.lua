@@ -16,7 +16,7 @@ local function CaltulateItemLevelFromEquippedItems(unit)
             local mainHandLink = GetInventoryItemLink(unit, 16)
             if mainHandLink then
                 local _, _, _, _, _, _, _, _, mainHandEquipLoc = GetItemInfo(mainHandLink)
-                if mainHandEquipLoc == "INVTYPE_2HWEAPON" then
+                if mainHandEquipLoc == "INVTYPE_2HWEAPON" or mainHandEquipLoc == "INVTYPE_RANGEDRIGHT" then
                     -- This corrects for the missing off-hand in the case of two-handed weapons
                     itemLink = mainHandLink
                 end
